@@ -13,24 +13,23 @@ function checkTime(i) {
     }
     return i;
   }
-let newTime = startTime();
 function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
+    let today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
     m = checkTime(m);
     return h + ":" + m;
 } 
-const messageText = ['Не мешайте сладко спать!', 'c Новым Годом, пошел нафиг!', 'Где-где, нигде!', 'Очень дорого,вам не по карману)))'];
-let messageTextRandom = function () {
-   return Math.floor(Math.random() * messageText.length);
+let messageText = ['Не мешайте сладко спать!', 'c Новым Годом, пошел нафиг!', 'Где-где, нигде!', 'Очень дорого,вам не по карману)))'];
+let messageTextRandom = function (e) {
+   return Math.floor(Math.random() * e.length);
 }
 chatWidgetInput.addEventListener('keyup', (e) => {
     if (e.code === 'Enter') {
         if (chatWidgetInput.value.trim()) {
-            chatWidgetMessages.innerHTML += '<div class="message message_client"><div class = "message__time">' + (newTime.innerHTML = startTime()) + '</div><div class = "message__text">' + chatWidgetInput.value + '</div></div>';
+            chatWidgetMessages.innerHTML += '<div class="message message_client"><div class = "message__time">' + startTime() + '</div><div class = "message__text">' + chatWidgetInput.value + '</div></div>';
             chatWidgetInput.value = '';
-            chatWidgetMessages.innerHTML += '<div class="message"><div class="message__time">' + (newTime.innerHTML = startTime()) + '</div><div class="message__text">' + (messageText.innerHTML = messageText[messageTextRandom()]) + '</div></div>';
+            chatWidgetMessages.innerHTML += '<div class="message"><div class="message__time">' + startTime() + '</div><div class="message__text">' + messageText[messageTextRandom(messageText)] + '</div></div>';
         }
     }
 })
