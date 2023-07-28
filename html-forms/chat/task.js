@@ -27,12 +27,10 @@ let messageTextRandom = function () {
 }
 chatWidgetInput.addEventListener('keyup', (e) => {
     if (e.code === 'Enter') {
-        if (chatWidgetInput.value === '') {
-            return;
-        } else {
+        if (chatWidgetInput.value.trim()) {
             chatWidgetMessages.innerHTML += '<div class="message message_client"><div class = "message__time">' + (newTime.innerHTML = startTime()) + '</div><div class = "message__text">' + chatWidgetInput.value + '</div></div>';
             chatWidgetInput.value = '';
+            chatWidgetMessages.innerHTML += '<div class="message"><div class="message__time">' + (newTime.innerHTML = startTime()) + '</div><div class="message__text">' + (messageText.innerHTML = messageText[messageTextRandom()]) + '</div></div>';
         }
-        chatWidgetMessages.innerHTML += '<div class="message"><div class="message__time">' + (newTime.innerHTML = startTime()) + '</div><div class="message__text">' + (messageText.innerHTML = messageText[messageTextRandom()]) + '</div></div>';
     }
 })
